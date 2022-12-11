@@ -2,8 +2,12 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 
+import './app.css'
+
 // LOGIN & REGISTER
 import Signup from "./Pages/signup/Sign-up";
+import SignIn from "./Pages/signin/sign-in";
+import Dashboard from "./Pages/dashboard/Dashboard";
 // import Login from "./pages/auth/login/Login";
 // import UserRoute from "./routes/User.route";
 // import { ToastContainer } from 'react-toastify';
@@ -38,7 +42,8 @@ function App() {
         <Routes>
           {user ? (
             <>
-            <Route path="*" element={<div>404</div>} />
+            <Route path="/" element={<div>Home</div>} />
+            <Route path="/dashboard" element={<Dashboard/>} />
               {/* <Route path="/" element={<UserRoute />}>
                 <Route path="/" element={<Home />} />
               </Route>
@@ -58,7 +63,7 @@ function App() {
           ) : (
             <>
               <Route path="/signup" element={<Signup />} />
-              {/* <Route path="/login" element={<Login />} /> */}
+              <Route path="/login" element={<SignIn />} />
             </>
           )}
           <Route path="*" element={<div>404</div>} />
