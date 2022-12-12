@@ -2,7 +2,7 @@ import axios from 'axios'
 import { BASE_URL } from '../utils/contants.util'
 
 export const loginUser = async (values) =>
-    await axios.post(`${BASE_URL}/login`, {
+    await axios.post(`${BASE_URL}/signin`, {
         ...values
     })
 
