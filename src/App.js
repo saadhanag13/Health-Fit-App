@@ -9,6 +9,7 @@ import SignIn from "./Pages/signin/sign-in";
 import Dashboard from "./Pages/dashboard/Dashboard";
 import Home from "./Pages/Home";
 import { Navbar } from "./widgets/layout";
+import UserRoute from "./routes/User.route";
 
 function App() {
   const { user } = useSelector((state) => ({ ...state }));
@@ -53,15 +54,25 @@ function App() {
         </div>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route
-            path="/dashboard"
-            element={user ? <Dashboard /> : <div>404</div>}
-          />
+          {user ? (
+            <>
+              <Route path="/" element={<UserRoute />}>
+                <Route path="/dashboard" element={<Dashboard />} />
+              </Route>
 
-          <Route path="/signup" element={!user ? <Signup /> : <div>404</div>} />
-          <Route path="/signin" element={!user ? <SignIn /> : <div>404</div>} />
+              <Route path="/" element={<UserRoute />}>
+                <Route path="/" element={<Home />} />
+              </Route>
 
-          <Route path="*" element={<div>404</div>} />
+              <Route path="*" element={<div>404</div>} />
+            </>
+          ) : (
+            <>
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/signin" element={<SignIn />} />
+              <Route path="*" element={<div>404</div>} />
+            </>
+          )}
         </Routes>
       </div>
     </Router>
