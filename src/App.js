@@ -13,33 +13,37 @@ import { Navbar } from "./widgets/layout";
 function App() {
   const { user } = useSelector((state) => ({ ...state }));
   let userRoutes = user
-    ? [{
-        // icon: UserCircleIcon,
-        name: 'Dashboard',
-        path: "/dashboard",
-        
-        element: <Dashboard />,
-      }]
-    : [{
-        // icon: ArrowRightOnRectangleIcon,
-        name: "Sign In",
-        path: "/signin",
-        element: <SignIn />,
-      },
-      {
-        // icon: UserPlusIcon,
-        name: "Sign Up",
-        path: "/signup",
-        element: <Signup />,
-      }];
+    ? [
+        {
+          // icon: UserCircleIcon,
+          name: "Dashboard",
+          path: "/dashboard",
+
+          element: <Dashboard />,
+        },
+      ]
+    : [
+        {
+          // icon: ArrowRightOnRectangleIcon,
+          name: "Sign In",
+          path: "/signin",
+          element: <SignIn />,
+        },
+        {
+          // icon: UserPlusIcon,
+          name: "Sign Up",
+          path: "/signup",
+          element: <Signup />,
+        },
+      ];
   const routes = [
     {
       // icon: HomeIcon,
       name: "Home",
       path: "/",
       element: <Home />,
-    },...userRoutes
-    ,
+    },
+    ...userRoutes,
   ];
   return (
     <Router>
@@ -49,17 +53,14 @@ function App() {
         </div>
         <Routes>
           <Route path="/" element={<Home />} />
-          {user ? (
-            <>
-              <Route path="/dashboard" element={<Dashboard />} />
-              
-            </>
-          ) : (
-            <>
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/signin" element={<SignIn />} />
-            </>
-          )}
+          <Route
+            path="/dashboard"
+            element={user ? <Dashboard /> : <div>404</div>}
+          />
+
+          <Route path="/signup" element={!user ? <Signup /> : <div>404</div>} />
+          <Route path="/signin" element={!user ? <SignIn /> : <div>404</div>} />
+
           <Route path="*" element={<div>404</div>} />
         </Routes>
       </div>
