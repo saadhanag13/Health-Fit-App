@@ -7,12 +7,13 @@ const { transporter } = require('../utilies/nodemailer.util')
 exports.signUpPost = async (req, res) => {
     try {
         const { email, password, OTP, confirmOTP, age, username, phoneNumber } = req.body;
+        console.log(email)
         if (parseInt(OTP) !== confirmOTP) {
             return res.status(500).json('Invalid OTP. Please enter the OTP which is sent to your mail.')
         }
 
-        let user = await User.findOne({ email, raw: true })
-
+        let user = await User.findOne({ where: {email}, raw: true })
+        console.log(user)
         if (user) return res.status(500).json({
             error: 'User already exists'
         });
