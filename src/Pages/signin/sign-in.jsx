@@ -38,7 +38,7 @@ const SignIn = () => {
         window.location.href = "/dashboard";
       })
       .catch((err) => {
-        window.location.href = "/signin";
+         window.location.href = "/signin";
         console.log(err);
       });
   };
