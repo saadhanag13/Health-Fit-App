@@ -55,17 +55,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           {user ? (
-            <>
               <Route path="/" element={<UserRoute />}>
                 <Route path="/dashboard" element={<Dashboard />} />
               </Route>
-
-              <Route path="/" element={<UserRoute />}>
-                <Route path="/" element={<Home />} />
-              </Route>
-
-              <Route path="*" element={<div>404</div>} />
-            </>
           ) : (
             <>
               <Route path="/signup" element={<Signup />} />
