@@ -54,16 +54,16 @@ function App() {
         </div>
         <Routes>
           <Route path="/" element={<Home />} />
-          {user ? (
+          {/* {user ? ( */}
               <Route path="/" element={<UserRoute />}>
                 <Route path="/dashboard" element={<Dashboard />} />
               </Route>
-          ) : (
+          {/* ) : ( */}
             <>
               <Route path="/signup" element={<Signup />} />
               <Route path="/signin" element={<SignIn />} />
             </>
-          )}
+          {/* )} */}
           <Route path="*" element={<div>404</div>} />
         </Routes>
       </div>
