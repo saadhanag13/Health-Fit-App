@@ -19,7 +19,7 @@ https://healthandfit-d4b6a.web.app/
 
 **Server:** Node, Express, MySql
 
-**Hosting:**Firebase
+**Hosting:** Firebase
 
 ## Run Locally
 
